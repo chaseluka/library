@@ -10,7 +10,7 @@
 <body>
     <div class="container"></div>
 
-    <form action="example.com/path" method="post" id="new-book">
+    <form id="new-book">
         <Legend>ADD NEW BOOK</Legend>
         <div class="input-container">
             <label for="title">Title:</label>
@@ -25,19 +25,8 @@
             <input type="number" id="pages" name="pages" required>
         </div>
         <div class="input-container">
-            <label for="year">Publication Year:</label>
-            <input type="number" id="year" name="year" minlength="1" maxlength="4" required>
-        </div>
-        <div class="input-container">
-            <label for="publisher">Publisher:</label>
-            <input type="text" id="publisher" name="publisher" required>
-        </div>
-        <div class="input-container">
-            <label for="isbn">ISBN (Book Number):</label>
-            <input type="number" id="isbn" name="isbn" minlength="10" maxlength="13" required>
-        </div>
-        <div class="input-container">
-            <button id="btn">ADD BOOK</button>
+            <label for="btn">ADD NEW BOOK</label>
+            <input type="button" id="btn">
         </div>
     </form>
 

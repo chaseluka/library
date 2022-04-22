@@ -1,26 +1,30 @@
 const container = document.querySelector('.container');
+const btn = document.getElementById('btn');
 let library = [];
 
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, year, publisher, isbn) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read
+    this.year = year
+    this.publisher = publisher
+    this.isbn = isbn
     this.info = function(){
-        return (title + ' by ' + author + ', ' + pages + ' pages, ' + read);
+        return (title + ' by ' + author + ', ' + pages + ' pages, ' + year + ' published by ' + publisher + ', ' + isbn);
     }
 }
 
 function addBooktoLibrary(){
-    for(let i = 0; i < 2; i++){
-        const newBook = new Book(prompt('Title'), prompt('Author'), prompt('Pages'), prompt('Read'));
-        const div = document.createElement('div');
-        div.textContent = newBook.info();
-        container.appendChild(div);
-        library.push(newBook);
-    }
-    console.log(library);
+    const newBook = new Book(
+        document.getElementById('title').value, 
+        document.getElementById('author').value, 
+        document.getElementById('pages').value,
+        );
+    const div = document.createElement('div');
+    div.textContent = newBook.info();
+    container.appendChild(div);
+    library.push(newBook);
 }
 
-addBooktoLibrary();
+btn.addEventListener('click', addBooktoLibrary);
