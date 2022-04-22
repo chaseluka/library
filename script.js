@@ -3,15 +3,13 @@ const btn = document.getElementById('btn');
 let library = [];
 
 
-function Book(title, author, pages, year, publisher, isbn) {
+function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.year = year
-    this.publisher = publisher
-    this.isbn = isbn
+    this.read = read
     this.info = function(){
-        return (title + ' by ' + author + ', ' + pages + ' pages, ' + year + ' published by ' + publisher + ', ' + isbn);
+        return (title + ' by ' + author + ', ' + pages + ' pages, ' + read);
     }
 }
 
@@ -20,6 +18,7 @@ function addBooktoLibrary(){
         document.getElementById('title').value, 
         document.getElementById('author').value, 
         document.getElementById('pages').value,
+        document.getElementById('read').checked
         );
     const div = document.createElement('div');
     div.textContent = newBook.info();
