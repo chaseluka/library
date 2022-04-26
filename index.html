@@ -45,25 +45,28 @@
             </table>
             <button class="add-book-main" onclick="on()">+</button>
         </div>
-        <div class="form-container" id="form">
-            <form id="new-book">
-                <div class="input-container">
-                    <input type="text" id="title" name="title" placeholder="Title" required>
-                </div>
-                <div class="input-container">
-                    <input type="text" id="author" name="author" placeholder="Author" required>
-                </div>
-                <div class="input-container">
-                    <input type="number" id="pages" name="pages" placeholder="Pages" required>
-                </div>
-                <div class="input-container">
-                    <label for="read">I have read this book:</label>
-                    <input type="checkbox" id="read" name="read" value="true" data-val="true">
-                </div>
-                <div class="input-container">
-                    <input type="button" id="btn">
-                </div>
-            </form>
+        <div id="form">
+            <div class="form-container">
+                <button class="remove-form" onclick="off()">x</button>
+                <form id="new-book">
+                    <div class="input-container">
+                        <input type="text" id="title" name="title" placeholder="Title" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="author" name="author" placeholder="Author" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="number" id="pages" name="pages" placeholder="Pages" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="read">I have read this book:</label>
+                        <input type="checkbox" id="read" name="read" value="true" data-val="true">
+                    </div>
+                    <div class="input-container">
+                        <input type="button" id="btn">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

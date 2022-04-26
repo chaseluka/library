@@ -140,10 +140,46 @@ button:active {
 }
 
 .form-container {
+    position: relative;
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
     background-color: #fff;
     width: 300px;
-    padding: 30px 15px;
+    padding: 7px 15px 30px 15px;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#form{
+    position: fixed; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2; 
+    background-color:rgba(68, 68, 68, 0.566); 
+
+}
+
+.remove-form {
+    appearance: none;
+    border: none;
+    background-color: #fff;
+    font-size: 18px;
+    width: 21px;
+    align-self: flex-end;
+    padding: 0;
+    border-radius: 100%;
+}
+
+.remove-form:hover {
+    border: 1px solid black;
 }
 
 form {

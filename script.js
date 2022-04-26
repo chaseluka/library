@@ -36,4 +36,3 @@ function on() {
 function off() {
     document.getElementById("form").style.display = "none";
 };
-off();
