@@ -138,3 +138,77 @@ button:active {
         display: none;
     }
 }
+
+.form-container {
+    background-color: #fff;
+    width: 300px;
+    padding: 30px 15px;
+    border-radius: 15px;
+}
+
+form {
+    display: grid;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+#title, #author, #pages {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    font-size: 18px;
+    color: #333;
+    width: 270px;
+    background-color: #fafafa;
+}
+
+#title:focus,
+#author:focus,
+#pages:focus {
+    border: 2px solid #6221b7;
+}
+
+label {
+    font-size: 18px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.50em;
+    height: 1.50em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #6221b7;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+form div:nth-child(4){
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
