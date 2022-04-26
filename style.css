@@ -3,7 +3,7 @@
 
 body {
     width: 100vw;
-    height: 100%;
+    min-height: 100vh;
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(45deg, #4158d0, #c850c0);
@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .header {
@@ -30,14 +30,14 @@ body {
 }
 
 .library-title {
-    font-size: clamp(40px, 4vw + 1rem, 60px);
+    font-size: clamp(50px, 4vw + 1rem, 60px);
     padding-top: 10px;
     white-space: nowrap;
     color: white;
 }
 
 svg {
-    height: clamp(60px, 4vw + 2.4rem, 90px);
+    height: clamp(75px, 4vw + 2.4rem, 90px);
     
 }
 
@@ -46,19 +46,20 @@ svg {
     width: 150px;
     height: 50px;
     font-size: 20px;
-    background-color: blue;
+    background-color: transparent;
     border-radius: 10px;
-    border: none;
+    border: 2px solid #fff;
+    color: #fff;
     align-self: center;
     justify-self: end;
-    margin: 30px 15% 0 0;
+    margin: 10px 15% 0 0;
 }
 
 .main  {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 50px;
     align-items: center;
 }
 
@@ -113,3 +114,27 @@ tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+.add-book-main {
+    appearance: none;
+    border-radius: 100%;
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    background-color: #fff;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+@media screen and (max-width: 560px) {
+    div > .library-title {
+        display: none;
+    }
+}
