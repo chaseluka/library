@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const tbody = document.querySelector('tbody');
 const btn = document.getElementById('btn');
 let library = [];
 
@@ -20,9 +21,24 @@ function addBooktoLibrary(){
         document.getElementById('pages').value,
         document.getElementById('read').checked
         );
-    const div = document.createElement('div');
-    div.textContent = newBook.info();
-    container.appendChild(div);
+    const row = document.createElement('tr');
+    tbody.appendChild(row);
+    
+    const tdTitle = document.createElement('td');
+    const tdAuthor = document.createElement('td');
+    const tdPages = document.createElement('td');
+    const tdRead = document.createElement('td');
+    
+    tdTitle.textContent = newBook.title;
+    tdAuthor.textContent = newBook.author;
+    tdPages.textContent = newBook.pages;
+    tdRead.textContent = newBook.read;
+
+    row.appendChild(tdTitle);
+    row.appendChild(tdAuthor);
+    row.appendChild(tdPages);
+    row.appendChild(tdRead);
+
     library.push(newBook);
 }
 
