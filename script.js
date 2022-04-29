@@ -65,9 +65,11 @@ function addBooktoLibrary(){
     img.src = 'images/minus-circle.svg';
     tdDelete.appendChild(img);
 
-    library.push(newBook);  //store newBook into the array
+    tdRead.addEventListener('click', () => changeReadStatus(tdRead));
     
     tdDelete.addEventListener('click', () => deleteBook(tdDelete))
+    
+    library.push(newBook);  //store newBook into the array
 }
 
 btn.addEventListener('click', addBooktoLibrary); //add the new book to the library when submitted
@@ -82,12 +84,32 @@ function off() {
     document.getElementById("form").style.display = "none";
 };
 
+//Add or remove classes for displaying read status
+
+function changeReadStatus(tdRead){  
+    let bookTitle = tdRead.parentElement.getAttribute('data-title'); //target parent element of title selected given it has a prestablished data-title
+    library.forEach((obj) => {  //filter through array and find all titles, if one matches data-title from above, returns the array without this item.
+        if (obj.title === bookTitle){
+            if (obj.read === true){
+                obj.read = false;
+                tdRead.textContent = "Not Read";
+            }
+            else if (obj.read === false) {
+                obj.read = true;
+                tdRead.textContent = "Read";
+            }
+        }
+    })
+
+    tdRead.classList.toggle('read');
+    tdRead.classList.toggle('not-read');
+}
+
 //Deletes a book from library when minus button is clicked.
 
 function deleteBook (tdDelete){
     let bookTitle = tdDelete.parentElement.getAttribute('data-title'); //target parent element of title selected given it has a prestablished data-title
     library = library.filter(obj => {  //filter through array and find all titles, if one matches data-title from above, returns the array without this item.
-        console.log(obj.title);
         return obj.title != bookTitle;
     })
     tdDelete.parentElement.remove(); //Removes from display
