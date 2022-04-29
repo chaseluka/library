@@ -95,6 +95,7 @@ function on() {
 
 function off() {
     document.getElementById("form").style.display = "none";
+    resetForm();
 };
 
 //Add or remove classes for displaying read status
@@ -171,11 +172,15 @@ function validateForm (e){
     else {
         pagesError.style.display = 'none';
     }
+    
+    if (isNaN(pageNum)){
+        pageNum = 1;
+    }
 
     if (title.value !== '' && author.value !== '' && pageNum < 10001){
         addBooktoLibrary();
         off();
-        resetForm();
+        
     }
 
     else {
@@ -193,7 +198,7 @@ function saveData(){
 }
 
 
-//Retrieve data from local storage upon page reload
+//Retrieve data from local upon page reload
 
 function retrieveData() {
     if (localStorage.getItem('MyBooks') === null){
