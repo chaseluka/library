@@ -2,13 +2,10 @@
 
 const tbody = document.querySelector('tbody');
 const btn = document.getElementById('btn');
-
 const pages = document.getElementById('pages');
 const author = document.getElementById('author');
 const title = document.getElementById('title');
 const read = document.getElementById('read');
-const form = document.getElementById('new-book');
-
 let libraryStorage = '';
 
 //Array storing all books
@@ -34,8 +31,17 @@ function addBooktoLibrary(){
         document.getElementById('read').checked //To return a boolean
         );
 
-    //Add new book to the DOM with correct values from newBook
-  
+    displayBookOnTable(newBook);
+    
+    library.push(newBook);  //store newBook into the array
+
+    saveData();
+    
+}
+
+//Add new book to the DOM with correct values from newBook
+
+function displayBookOnTable (newBook){
     const row = document.createElement('tr');
     row.setAttribute('data-title', `${newBook.title}`);
     tbody.appendChild(row);
@@ -76,12 +82,9 @@ function addBooktoLibrary(){
     tdRead.addEventListener('click', () => changeReadStatus(tdRead));
     
     tdDelete.addEventListener('click', () => deleteBook(tdDelete))
-    
-    library.push(newBook);  //store newBook into the array
-
-    saveData();
-    
 }
+
+//validates form and if form is validated, it add a new book to the library
 
 btn.addEventListener('click', (e) => {
     validateForm(e);
@@ -173,7 +176,7 @@ function validateForm (e){
         pagesError.style.display = 'none';
     }
     
-    if (isNaN(pageNum)){
+    if (isNaN(pageNum)){ //if pageNum is Nan, allows test to pass below (i.e., pages.value isn't requried)
         pageNum = 1;
     }
 
@@ -207,7 +210,10 @@ function retrieveData() {
     else {
         let retrieveStorage = JSON.parse(localStorage.getItem('MyBooks'));
         library = retrieveStorage;
-        console.log(retrieveStorage);
+        library.forEach(obj =>{
+            displayBookOnTable(obj);
+        })
+    
     }
 }
 retrieveData();
