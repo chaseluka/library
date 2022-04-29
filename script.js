@@ -2,10 +2,13 @@
 
 const tbody = document.querySelector('tbody');
 const btn = document.getElementById('btn');
+
 const pages = document.getElementById('pages');
 const author = document.getElementById('author');
 const title = document.getElementById('title');
 const read = document.getElementById('read');
+const form = document.getElementById('new-book');
+
 
 //Array storing all books
 
@@ -76,10 +79,9 @@ function addBooktoLibrary(){
     library.push(newBook);  //store newBook into the array
 }
 
-btn.addEventListener('click', () => {
-    addBooktoLibrary();
-    resetForm();
-}); //add the new book to the library when submitted
+btn.addEventListener('click', (e) => {
+    validateForm(e);
+}); 
 
 //Allows form to display when buttons are clicked.
 
@@ -122,7 +124,6 @@ function deleteBook (tdDelete){
     tdDelete.parentElement.remove(); //Removes from display
 }
 
-
 //clear form after submission
 
 function resetForm(){
@@ -130,4 +131,51 @@ function resetForm(){
     author.value = '';
     title.value = '';
     read.checked = false;
+    read.value = false;
 }
+
+//Validate the form. Display errors if requirements are not met, and add book to library if all conditions are met.
+
+function validateForm (e){
+    const titleError = document.querySelector('.title-error');
+    const authorError = document.querySelector('.author-error');
+    const pagesError = document.querySelector('.pages-error');
+    
+    
+
+    if (title.value === '' || title.value == null){
+        titleError.style.display = 'block';
+    }
+    else {
+        titleError.style.display = 'none';
+    }
+    if (author.value === '' || author.value == null){
+        authorError.style.display = 'block';
+    }
+    else {
+        authorError.style.display = 'none';
+    }
+
+    let pageNum = parseInt(pages.value); //covert to a num to test conditional below.
+
+    if (pageNum > 10000) {
+        pagesError.style.display = 'block';
+    }
+    else {
+        pagesError.style.display = 'none';
+    }
+
+    if (title.value !== '' && author.value !== '' && pageNum < 10001){
+        addBooktoLibrary();
+        off();
+        resetForm();
+    }
+
+    else {
+        e.preventDefault();
+    }
+
+    
+}
+
+
