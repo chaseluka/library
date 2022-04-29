@@ -2,6 +2,10 @@
 
 const tbody = document.querySelector('tbody');
 const btn = document.getElementById('btn');
+const pages = document.getElementById('pages');
+const author = document.getElementById('author');
+const title = document.getElementById('title');
+const read = document.getElementById('read');
 
 //Array storing all books
 
@@ -72,7 +76,10 @@ function addBooktoLibrary(){
     library.push(newBook);  //store newBook into the array
 }
 
-btn.addEventListener('click', addBooktoLibrary); //add the new book to the library when submitted
+btn.addEventListener('click', () => {
+    addBooktoLibrary();
+    resetForm();
+}); //add the new book to the library when submitted
 
 //Allows form to display when buttons are clicked.
 
@@ -88,7 +95,7 @@ function off() {
 
 function changeReadStatus(tdRead){  
     let bookTitle = tdRead.parentElement.getAttribute('data-title'); //target parent element of title selected given it has a prestablished data-title
-    library.forEach((obj) => {  //filter through array and find all titles, if one matches data-title from above, returns the array without this item.
+    library.forEach((obj) => {  //sort through array and find title that matches from above, and change book.read data accordingly.
         if (obj.title === bookTitle){
             if (obj.read === true){
                 obj.read = false;
@@ -108,9 +115,19 @@ function changeReadStatus(tdRead){
 //Deletes a book from library when minus button is clicked.
 
 function deleteBook (tdDelete){
-    let bookTitle = tdDelete.parentElement.getAttribute('data-title'); //target parent element of title selected given it has a prestablished data-title
+    let bookTitle = tdDelete.parentElement.getAttribute('data-title'); 
     library = library.filter(obj => {  //filter through array and find all titles, if one matches data-title from above, returns the array without this item.
         return obj.title != bookTitle;
     })
     tdDelete.parentElement.remove(); //Removes from display
+}
+
+
+//clear form after submission
+
+function resetForm(){
+    pages.value = '';
+    author.value = '';
+    title.value = '';
+    read.checked = false;
 }
