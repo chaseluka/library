@@ -9,6 +9,7 @@ const title = document.getElementById('title');
 const read = document.getElementById('read');
 const form = document.getElementById('new-book');
 
+let libraryStorage = '';
 
 //Array storing all books
 
@@ -77,6 +78,9 @@ function addBooktoLibrary(){
     tdDelete.addEventListener('click', () => deleteBook(tdDelete))
     
     library.push(newBook);  //store newBook into the array
+
+    saveData();
+    
 }
 
 btn.addEventListener('click', (e) => {
@@ -112,6 +116,8 @@ function changeReadStatus(tdRead){
 
     tdRead.classList.toggle('read');
     tdRead.classList.toggle('not-read');
+
+    saveData();
 }
 
 //Deletes a book from library when minus button is clicked.
@@ -122,6 +128,7 @@ function deleteBook (tdDelete){
         return obj.title != bookTitle;
     })
     tdDelete.parentElement.remove(); //Removes from display
+    saveData();
 }
 
 //clear form after submission
@@ -178,4 +185,24 @@ function validateForm (e){
     
 }
 
+//Save data to local storage
 
+function saveData(){
+    libraryStorage = JSON.stringify(library);
+    localStorage.setItem('MyBooks', libraryStorage);
+}
+
+
+//Retrieve data from local storage upon page reload
+
+function retrieveData() {
+    if (localStorage.getItem('MyBooks') === null){
+        library = [];
+    }
+    else {
+        let retrieveStorage = JSON.parse(localStorage.getItem('MyBooks'));
+        library = retrieveStorage;
+        console.log(retrieveStorage);
+    }
+}
+retrieveData();
