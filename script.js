@@ -9,6 +9,7 @@ const read = document.getElementById('read');
 const startSearch = document.querySelector('.search-bar > svg');
 const search = document.getElementById('search');
 const searchBook = document.getElementById('search-book');
+
 let bookFound = 0;
 let libraryStorage = '';
 
