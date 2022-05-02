@@ -74,14 +74,14 @@ svg {
     align-items: center;
 }
 
-.search-bar-container {
+.search-bar {
     margin-top: 40px;
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.search-bar-container > svg {
+.search-bar > svg {
     height: 24px;
     color: var(--white);
 }
@@ -160,11 +160,11 @@ tbody > tr {
     color: var(--white);
 }
 
-button:hover, input[type="button"]:hover,  #search-book:focus, .search-bar-container > svg:hover {
+button:hover, input[type="button"]:hover,  #search-book:focus, .search-bar > svg:hover {
     transform: scale(1.05);
 }
 
-button:active, input[type="button"]:active, .search-bar-container > svg:active {
+button:active, input[type="button"]:active, .search-bar > svg:active {
     transform: scale(0.95);
 }
 
@@ -208,7 +208,7 @@ button:active, input[type="button"]:active, .search-bar-container > svg:active {
     border: none;
 }
 
-form {
+#new-book {
     display: grid;
     flex-direction: column;
     gap: 15px;
@@ -294,9 +294,17 @@ form div:nth-child(4){
     color: var(--red);
 }
 
+.input-container > div:last-child, .search-error {
+    display: none;
+    font-size: 13px;
+}
+
 .input-container > div:last-child {
     color: var(--red);
-    display: none;
     padding-left: 5px;
-    font-size: 13px;
+}
+
+.search-error {
+    color: var(--white);
+    padding: 5px 0 0 35px;
 }

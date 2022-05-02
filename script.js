@@ -6,7 +6,10 @@ const pages = document.getElementById('pages');
 const author = document.getElementById('author');
 const title = document.getElementById('title');
 const read = document.getElementById('read');
-const search = document.querySelector('.search-bar-container > svg');
+const startSearch = document.querySelector('.search-bar > svg');
+const search = document.getElementById('search');
+const searchBook = document.getElementById('search-book');
+let bookFound = 0;
 let libraryStorage = '';
 
 //Array storing all books
@@ -221,14 +224,42 @@ retrieveData();
 
 //Search for title of book, if found, return title to the top of the table.
 
-function searchBook (){ 
+function searchTitle (){ 
     let bookTitle = document.getElementById('search-book').value;
     library.forEach(obj => {
         if (obj.title === bookTitle){
             const selectedElement = document.querySelector(`[data-title="${obj.title}"`);
             tbody.prepend(selectedElement);
+            bookFound++;
         }
     })
+    searchErrorDisplay();
 }
 
-search.addEventListener('click', searchBook);
+//Show error if title isn't found
+
+function searchErrorDisplay(){
+    const searchError = document.querySelector('.search-error');
+    if (searchBook.value === '' || searchBook.value == null){
+        searchError.style.display = 'none';
+    }
+    else {
+        if (bookFound < 1){
+            searchError.style.display = 'block';
+        }
+        else {
+            searchError.style.display = 'none';
+        }
+        bookFound = 0;
+    }
+}
+
+startSearch.addEventListener('click', searchTitle); //run search on button click
+
+function clearSearchDisplay() {
+    const searchError = document.querySelector('.search-error');
+    searchError.style.display = 'none';
+}
+
+
+searchBook.addEventListener('focus', clearSearchDisplay);
