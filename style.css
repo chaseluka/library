@@ -63,13 +63,34 @@ svg {
     align-items: center;
 }
 
+.search-bar-container {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-bar-container > svg {
+    height: 24px;
+    color: #fff;
+}
+
+#search-book {
+    appearance: none;
+    border-radius: 30px;
+    border: 1px solid #6221b7;
+    padding: 7px 15px;
+    font-size: 15px;
+    width: 220px;
+    box-shadow: 1px 1px #555;
+}
+
 table {
     border-collapse: collapse;
     border-radius: 6px;
     letter-spacing: 1px;
     font-size: 1rem;
     width: clamp(300px, 70vw, 1000px);
-    margin-top: 80px;
 }
 
 thead {
@@ -128,11 +149,11 @@ tbody > tr {
     color: #fff;
 }
 
-button:hover, input[type="button"]:hover {
+button:hover, input[type="button"]:hover,  #search-book:focus, .search-bar-container > svg:hover {
     transform: scale(1.05);
 }
 
-button:active, input[type="button"]:active {
+button:active, input[type="button"]:active, .search-bar-container > svg:active {
     transform: scale(0.95);
 }
 

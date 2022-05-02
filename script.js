@@ -6,6 +6,7 @@ const pages = document.getElementById('pages');
 const author = document.getElementById('author');
 const title = document.getElementById('title');
 const read = document.getElementById('read');
+const search = document.querySelector('.search-bar-container > svg');
 let libraryStorage = '';
 
 //Array storing all books
@@ -201,7 +202,7 @@ function saveData(){
 }
 
 
-//Retrieve data from local upon page reload
+//Retrieve data from local storage upon page reload
 
 function retrieveData() {
     if (localStorage.getItem('MyBooks') === null){
@@ -217,3 +218,17 @@ function retrieveData() {
     }
 }
 retrieveData();
+
+//Search for title of book, if found, return title to the top of the table.
+
+function searchBook (){ 
+    let bookTitle = document.getElementById('search-book').value;
+    library.forEach(obj => {
+        if (obj.title === bookTitle){
+            const selectedElement = document.querySelector(`[data-title="${obj.title}"`);
+            tbody.prepend(selectedElement);
+        }
+    })
+}
+
+search.addEventListener('click', searchBook);
