@@ -226,8 +226,10 @@ retrieveData();
 
 function searchTitle (){ 
     let bookTitle = document.getElementById('search-book').value;
+    bookTitle = bookTitle.toLowerCase(); //Allows any kind of input of matching letters
+    console.log(bookTitle);
     library.forEach(obj => {
-        if (obj.title === bookTitle){
+        if (obj.title.toLowerCase() === bookTitle){
             const selectedElement = document.querySelector(`[data-title="${obj.title}"`);
             tbody.prepend(selectedElement);
             bookFound++;
@@ -263,3 +265,11 @@ function clearSearchDisplay() {
 
 
 searchBook.addEventListener('focus', clearSearchDisplay);
+
+window.addEventListener('keydown', function(e){  //Enter key runs search for Title.
+    const enter = document.querySelector(`#search-book[data-key="${e.keyCode}"]`);
+    if (enter){
+        searchTitle();
+        e.preventDefault();
+    }
+})
