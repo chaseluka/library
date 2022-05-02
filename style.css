@@ -1,12 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+:root {
+    --purple: #6221b7;
+    --blue: #4158d0;
+    --pink: #c850c0;
+    --white: #fff;
+    --darker-purple: #36304a;
+    --dark-purple: #4f1489;
+    --green: #5cef18;
+    --red: #ff0011;
+
+}
 
 body {
     width: 100vw;
     min-height: 100vh;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(45deg, #4158d0, #c850c0);
+    background: linear-gradient(45deg, var(--blue), var(--pink));
 }
 
 .container {
@@ -33,7 +44,7 @@ body {
     font-size: clamp(50px, 4vw + 1rem, 60px);
     padding-top: 10px;
     white-space: nowrap;
-    color: white;
+    color: var(--white);
 }
 
 svg {
@@ -48,8 +59,8 @@ svg {
     font-size: 20px;
     background-color: transparent;
     border-radius: 10px;
-    border: 2px solid #fff;
-    color: #fff;
+    border: 2px solid var(--white);
+    color: var(--white);
     align-self: center;
     justify-self: end;
     margin: 10px 15% 0 0;
@@ -72,13 +83,13 @@ svg {
 
 .search-bar-container > svg {
     height: 24px;
-    color: #fff;
+    color: var(--white);
 }
 
 #search-book {
     appearance: none;
     border-radius: 30px;
-    border: 1px solid #6221b7;
+    border: 1px solid var(--purple);
     padding: 7px 15px;
     font-size: 15px;
     width: 220px;
@@ -94,8 +105,8 @@ table {
 }
 
 thead {
-    background-color: #36304a;
-    color: #fff;
+    background-color: var(--darker-purple);
+    color: var(--white);
 }
 
 td {
@@ -111,7 +122,7 @@ th {
 tbody {
     background-color: transparent;
     text-align: center;
-    color: #fff;
+    color: var(--white);
     font-size: 0.9rem;
 }
 
@@ -134,7 +145,7 @@ th:last-child {
 }
 
 tbody > tr {
-    border-bottom: 2px dashed #fff;
+    border-bottom: 2px dashed var(--white);
 }
 
 .add-book-main {
@@ -146,7 +157,7 @@ tbody > tr {
     margin-bottom: 20px;
     font-size: 30px;
     background-color: transparent;
-    color: #fff;
+    color: var(--white);
 }
 
 button:hover, input[type="button"]:hover,  #search-book:focus, .search-bar-container > svg:hover {
@@ -168,7 +179,7 @@ button:active, input[type="button"]:active, .search-bar-container > svg:active {
     left: 50%;
     top: 30%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background-color: var(--white);
     width: 300px;
     padding: 7px 15px 30px 15px;
     border-radius: 15px;
@@ -193,7 +204,7 @@ button:active, input[type="button"]:active, .search-bar-container > svg:active {
 
 .remove-form {
     align-self: flex-end;
-    background-color: #fff;
+    background-color: var(--white);
     border: none;
 }
 
@@ -222,7 +233,7 @@ input {
 #title:focus,
 #author:focus,
 #pages:focus {
-    border: 2px solid #6221b7;
+    border: 2px solid var(--purple);
 }
 
 label {
@@ -231,7 +242,7 @@ label {
 
 input[type="checkbox"] {
     appearance: none;
-    background-color: #fff;
+    background-color: var(--white);
     margin: 0;
     font: inherit;
     color: currentColor;
@@ -250,7 +261,7 @@ input[type="checkbox"]::before {
     height: 1em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em #4f1489;
+    box-shadow: inset 1em 1em var(--dark-purple);
 }
 
 input[type="checkbox"]:checked::before {
@@ -265,10 +276,10 @@ form div:nth-child(4){
 }
 
 #btn {
-    background: linear-gradient(45deg, #c850c0, #4158d0);
+    background: linear-gradient(45deg, var(--pink), var(--blue));
     padding: 7px 20px;
     font-size: 20px;
-    color: #fff;
+    color: var(--white);
     border: none;
     border-radius: 10px;
     position: relative;
@@ -276,15 +287,15 @@ form div:nth-child(4){
 }
 
 .read {
-    color: #5cef18;
+    color: var(--green);
 }
 
 .not-read {
-    color: rgb(255, 0, 8);
+    color: var(--red);
 }
 
 .input-container > div:last-child {
-    color: #ff0000;
+    color: var(--red);
     display: none;
     padding-left: 5px;
     font-size: 13px;
